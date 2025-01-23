@@ -28,9 +28,9 @@ namespace TicketBookingFinalProject
             string venueName = textVenueName.Text;
             string location = textLocation.Text;
             int capacity;
-            if (string.IsNullOrWhiteSpace(venueName) || string.IsNullOrWhiteSpace(location) || !int.TryParse(textCapacity.Text, out capacity))
+            if (string.IsNullOrWhiteSpace(venueName) || string.IsNullOrWhiteSpace(location) || !int.TryParse(textCapacity.Text, out capacity) || capacity < 0)
             {
-                MessageBox.Show("Please fill in all fields with valid information.");
+                MessageBox.Show("Please fill in all fields with valid information and ensure the capacity is a non-negative value.");
                 return;
             }
             AppDbContext dbContext = new AppDbContext();
@@ -82,6 +82,11 @@ namespace TicketBookingFinalProject
             if (!int.TryParse(textCapacity.Text, out capacity) && !string.IsNullOrWhiteSpace(textCapacity.Text))
             {
                 MessageBox.Show("Please enter a valid Capacity.");
+                return;
+            }
+            if (capacity < 0)
+            {
+                MessageBox.Show("Capacity cannot be negative.");
                 return;
             }
             AppDbContext dbContext = new AppDbContext();

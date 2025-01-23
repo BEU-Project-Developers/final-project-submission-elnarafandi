@@ -142,13 +142,12 @@ namespace TicketBookingFinalProject
                 MessageBox.Show("Please enter a valid Ticket ID.");
                 return;
             }
-            decimal ticketPrice;
+            /*decimal ticketPrice;
             if (!decimal.TryParse(textPrice.Text, out ticketPrice) || ticketPrice <= 0)
             {
                 MessageBox.Show("Please enter a valid Ticket Price.");
                 return;
-            }
-            
+            }*/
 
             var ticketToUpdate = dbContext.Tickets.FirstOrDefault(t => t.Id == ticketId);
             if (ticketToUpdate == null)
@@ -156,6 +155,18 @@ namespace TicketBookingFinalProject
                 MessageBox.Show("Ticket not found.");
                 return;
             }
+
+            decimal ticketPrice = ticketToUpdate.Price;
+            if (!string.IsNullOrWhiteSpace(textPrice.Text))
+            {
+                if (!decimal.TryParse(textPrice.Text, out ticketPrice) || ticketPrice <= 0)
+                {
+                    MessageBox.Show("Please enter a valid Ticket Price.");
+                    return;
+                }
+            }
+
+          
 
             bool isEventChanged = ticketToUpdate.EventId != eventId;
             if (isEventChanged)

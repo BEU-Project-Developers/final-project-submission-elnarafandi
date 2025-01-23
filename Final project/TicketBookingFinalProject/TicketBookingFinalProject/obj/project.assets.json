@@ -4013,11 +4013,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Elnare\\Desktop\\TicketBookingFinalProject\\TicketBookingFinalProject\\TicketBookingFinalProject.csproj",
+      "projectUniqueName": "C:\\Users\\Elnare\\Desktop\\final-project-submission-elnarafandi\\Final project\\TicketBookingFinalProject\\TicketBookingFinalProject\\TicketBookingFinalProject.csproj",
       "projectName": "TicketBookingFinalProject",
-      "projectPath": "C:\\Users\\Elnare\\Desktop\\TicketBookingFinalProject\\TicketBookingFinalProject\\TicketBookingFinalProject.csproj",
+      "projectPath": "C:\\Users\\Elnare\\Desktop\\final-project-submission-elnarafandi\\Final project\\TicketBookingFinalProject\\TicketBookingFinalProject\\TicketBookingFinalProject.csproj",
       "packagesPath": "C:\\Users\\Elnare\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Elnare\\Desktop\\TicketBookingFinalProject\\TicketBookingFinalProject\\obj\\",
+      "outputPath": "C:\\Users\\Elnare\\Desktop\\final-project-submission-elnarafandi\\Final project\\TicketBookingFinalProject\\TicketBookingFinalProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

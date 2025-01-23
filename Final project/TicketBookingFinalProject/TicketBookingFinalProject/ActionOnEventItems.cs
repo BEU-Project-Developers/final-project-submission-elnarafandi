@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TicketBookingFinalProject.Data;
 using TicketBookingFinalProject.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TicketBookingFinalProject
 {
@@ -63,6 +64,11 @@ namespace TicketBookingFinalProject
                 MessageBox.Show("There are no venues available. Please add a venue first.");
                 return;
             }
+            if (comboBoxVenue.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a venue.");
+                return;
+            }
             string eventName = textName.Text;
             DateTime eventDate = dateTimePicker1.Value;
             int venueId = (int)comboBoxVenue.SelectedValue;
@@ -79,12 +85,7 @@ namespace TicketBookingFinalProject
                 return;
             }
 
-            if (venueId == 0)
-            {
-                MessageBox.Show("Please select a venue.");
-                return;
-            }
-            
+
             var existingEvent = dbContext.Events
             .FirstOrDefault(e => e.Name == eventName && e.Date == eventDate &&
                                  e.VenueId == venueId);
@@ -139,18 +140,24 @@ namespace TicketBookingFinalProject
                 MessageBox.Show("Please select a venue.");
                 return;
             }
+            if (eventDate == null || eventDate <= DateTime.Now)
+            {
+                MessageBox.Show("Please select a valid future event date.");
+                return;
+            }
             int venueId = (int)comboBoxVenue.SelectedValue;
             if (string.IsNullOrWhiteSpace(eventName) && eventDate == DateTime.MinValue && venueId == 0)
             {
                 MessageBox.Show("Please fill in at least one field to update.");
                 return;
             }
-            
+
             var existingEvent = dbContext.Events
-            .FirstOrDefault(e => e.Name == eventName && e.Date == eventDate);
+            .FirstOrDefault(e => e.Name == eventName && e.Date == eventDate && e.VenueId == venueId);
+
             if (existingEvent != null)
             {
-                MessageBox.Show("An event with the same name and date already exists. Please choose a different name or date.");
+                MessageBox.Show("An event with the same name, date, and venue already exists. Please choose a different name, date, or venue.");
                 return;
             }
             var eventToUpdate = dbContext.Events.FirstOrDefault(e => e.Id == eventId);

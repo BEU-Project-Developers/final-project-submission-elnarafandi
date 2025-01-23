@@ -82,6 +82,7 @@ namespace TicketBookingFinalProject
             {
                 dbContext.SaveChanges();
                 MessageBox.Show("User updated successfully!");
+                textId.Clear();
                 textFullname.Clear();
                 textEmail.Clear();
                 textPassword.Clear();

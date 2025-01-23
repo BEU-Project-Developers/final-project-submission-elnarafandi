@@ -37,12 +37,19 @@ namespace TicketBookingFinalProject
                 return;
             }
             AppDbContext dbContext = new AppDbContext();
-            bool userExists = dbContext.Users.Any(u => u.Username == username || u.Email == email);
-            if (userExists)
+            bool emailExists = dbContext.Users.Any(u => u.Email == email);
+            if (emailExists)
             {
-                MessageBox.Show("Username or email already exists. Please choose another.");
+                MessageBox.Show("Email already exists. Please choose another.");
                 return;
             }
+            bool usernameExists = dbContext.Users.Any(u => u.Username == username);
+            if (usernameExists)
+            {
+                MessageBox.Show("Username already exists. Please choose another.");
+                return;
+            }
+            
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Invalid email format. Please enter a valid email.");
